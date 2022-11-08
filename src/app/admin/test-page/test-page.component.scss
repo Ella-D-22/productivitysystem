@@ -1,0 +1,91 @@
+input,
+div {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    position: sticky;
+    padding-top: 15px;
+}
+
+div.contents {
+    width: 80vw;
+    height: 8vh;
+    border-radius: 7px;
+    background-color: white;
+}
+
+div.contents {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+li {
+    display: inline-block;
+}
+
+ul {
+    display: flex;
+}
+
+div.nav-searchbar {
+    position: relative;
+}
+
+input {
+    height: 20px;
+    background-color: #f3f3f9;
+    border-radius: 1.25rem;
+    padding: 15px;
+    outline: 0;
+    border: none;
+    height: 2.375rem;
+    width: 12.375rem;
+}
+
+i.fa-magnifying-glass {
+    position: absolute;
+    color: #74788d;
+    margin-top: 13px;
+    margin-left: 3px;
+    font-size: 0.7rem;
+}
+
+div.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 15px;
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+div.icon:hover {
+    background-color: plum;
+}
+
+img.icon {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 15px;
+    height: 30px;
+    width: 45px;
+    margin-right: 10px;
+}
+
+div.image {
+    height: 50px;
+    width: 70px;
+    background-image: url("../test-page/images/avatar1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
