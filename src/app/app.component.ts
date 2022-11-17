@@ -13,7 +13,7 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent implements OnInit {
   title = 'productivitysystem';
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'role', 'designation', 'newPassword', 'action'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'role', 'designation', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

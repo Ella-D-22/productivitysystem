@@ -6,17 +6,7 @@
       "email": "muringoviolet@gmail.com",
       "role": "User",
       "designation": "HR",
-      "newPassword": "8827violet",
       "id": 1
-    },
-    {
-      "firstName": "Ella",
-      "lastName": "Danielles",
-      "email": "danielle@gmail.com",
-      "role": "User",
-      "designation": "IT",
-      "newPassword": "Elle1000",
-      "id": 2
     },
     {
       "firstName": "Emmaculate",
@@ -26,6 +16,15 @@
       "designation": "Secretary",
       "newPassword": "sdytdcvmnuy",
       "id": 3
+    },
+    {
+      "firstName": "Levin ",
+      "lastName": "Ngoga",
+      "email": "levin1122@gmail.com",
+      "role": "Admin",
+      "designation": "IT dept",
+      "newPassword": "4537l",
+      "id": 4
     }
   ],
   "comments": [

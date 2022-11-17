@@ -26,7 +26,6 @@ actionBtn : string = "Save"
     email: ['',Validators.required],
    role : ['',Validators.required],
    designation : ['',Validators.required],
-   newPassword : ['',Validators.required],
   })
   if(this.editData){
     this.actionBtn = "Update";
@@ -35,7 +34,6 @@ actionBtn : string = "Save"
     this.employeeForm.controls['email'].setValue(this.editData.email);
     this.employeeForm.controls['role'].setValue(this.editData.role);
     this.employeeForm.controls['designation'].setValue(this.editData.designation);
-    this.employeeForm.controls['newPassword'].setValue(this.editData.newPassword);
   }
   }
 addEmployee(){
@@ -71,5 +69,5 @@ addEmployee(){
   })
  }
 
- hide = true;
+ 
 }

@@ -50,12 +50,6 @@
                     <td mat-cell *matCellDef="let row"> {{row.designation}} </td>
                 </ng-container>
 
-                <!-- newPassword Column -->
-                <ng-container matColumnDef="newPassword">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Password </th>
-                    <td mat-cell *matCellDef="let row"> {{row.newPassword}} </td>
-                </ng-container>
-
                 <!-- action Column -->
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
@@ -63,7 +57,7 @@
                         <button mat-icon-button (click)="editEmployee(row)" color="primary">
                            <mat-icon>edit</mat-icon>
                          </button>
-                        <button (click)="deleteEmployee(row.email)" style="margin-left: 9px;" mat-icon-button color="warn">
+                        <button (click)="deleteEmployee(row.id)" style="margin-left: 9px;" mat-icon-button color="warn">
                       <mat-icon>delete</mat-icon>
                     </button>
                     </td>
