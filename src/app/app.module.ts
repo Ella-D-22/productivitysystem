@@ -1,33 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { UserService } from './user-service.service';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './admin/admin.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { TestPageComponent } from './admin/test-page/test-page.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { SharedComponent } from './shared/shared.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProfileEditorComponent } from './admin/profile-editor/profile-editor.component';
 import {MatCardModule} from '@angular/material/card';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserFormComponent } from './user-form/user-form.component';
+import {MatSortModule} from '@angular/material/sort'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogModule } from '@angular/cdk/dialog';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
 
-    AdminComponent,
-     NavbarComponent,
-     TestPageComponent,
-     LoginPageComponent,
-     SharedComponent,
-     ProfileEditorComponent,
-     UserListComponent,
-     UserFormComponent,
+     DialogComponent,
 
     
   ],
@@ -35,11 +32,22 @@ import { UserFormComponent } from './user-form/user-form.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSelectModule,
     MatCardModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatButtonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
-  providers: [UserService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

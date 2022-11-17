@@ -1,6 +1,21 @@
-div.wrapper {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+button {
+    margin-left: 9px;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
