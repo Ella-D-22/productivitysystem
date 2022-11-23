@@ -5,7 +5,7 @@
     <span>Productivity System</span>
     <span class="example-spacer"></span>
 
-    <button mat-raised-button color="warn" (click)="openDialog()">Add</button>
+    <button id="empForm" mat-raised-button color="warn" (click)="openDialog()">Add</button>
 
 
 </mat-toolbar>
@@ -49,6 +49,13 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Designation </th>
                     <td mat-cell *matCellDef="let row"> {{row.designation}} </td>
                 </ng-container>
+
+                <!-- password Column -->
+                <ng-container matColumnDef="password">
+                    <th style="display: none;" mat-header-cell *matHeaderCellDef mat-sort-header> Password </th>
+                    <td style="display: none;" mat-cell *matCellDef="let row"> {{row.password}} </td>
+                </ng-container>
+
 
                 <!-- action Column -->
                 <ng-container matColumnDef="action">

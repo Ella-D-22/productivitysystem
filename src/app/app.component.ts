@@ -13,8 +13,9 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent implements OnInit {
   title = 'productivitysystem';
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'role', 'designation', 'action'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'role', 'designation', 'password' , 'action'];
   dataSource!: MatTableDataSource<any>;
+error:any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -27,19 +28,14 @@ export class AppComponent implements OnInit {
     this.getAllEmployees();
     }
 
-      applyFilter(event: Event) {
-       const filterValue = (event.target as HTMLInputElement).value;
-       this.dataSource.filter = filterValue.trim().toLowerCase();
-
-       if (this.dataSource.paginator) {
-       this.dataSource.paginator.firstPage();
-        }
-      }
+     
   
     openDialog() {
      this.dialog.open(DialogComponent, {
         width:'30%'
       }).afterClosed().subscribe(val=>{
+        
+        this.getAllEmployees();
       if(val==='save'){
        this.getAllEmployees();
       }
@@ -59,6 +55,7 @@ export class AppComponent implements OnInit {
       }
     })
     }
+    
 
    editEmployee(row: any){
     this.dialog.open(DialogComponent,{
@@ -70,6 +67,9 @@ export class AppComponent implements OnInit {
       }
     })
    }
+
+ 
+
     deleteEmployee(id:number){
       this.api.deleteEmployee(id)
       .subscribe({
@@ -84,7 +84,14 @@ export class AppComponent implements OnInit {
 
   }
 
-   
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+    this.dataSource.paginator.firstPage();
+     }
+   }  
 }
 
    

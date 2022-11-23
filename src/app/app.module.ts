@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogModule } from '@angular/cdk/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { DialogComponent } from './dialog/dialog.component';
     HttpClientModule,
     FormsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
 
   bootstrap: [AppComponent]
