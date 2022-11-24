@@ -14,56 +14,41 @@ export class DialogComponent implements OnInit {
 error: any;
   // employeeForm !:FormGroup;
   actionBtn: string = "Save";
+
   constructor(private formBuilder: FormBuilder,
     private api: ApiService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
-    private dialogRef: MatDialogRef<DialogRef>) { }
+    private dialogRef: DialogRef) { 
+      console.log("data", editData);
+      
+    }
 
-  employeeForm = this.formBuilder.group(
+   employeeForm = this.formBuilder.group(
     {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required],
-      role: ['', Validators.required],
+      appUserRole: ['', Validators.required],
       designation: ['', Validators.required],
       password: ['', Validators.required],
     }
-  )
-  onInitemployeeForm() {
+   )
+
+   onInitemployeeForm() {
     this.employeeForm = this.formBuilder.group(
       {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', Validators.required],
-        role: ['', Validators.required],
+        appUserRole: ['', Validators.required],
         designation: ['', Validators.required],
         password: ['', Validators.required],
       }
     )
-  }
+   }
+   
 
-
-
-//   if(this.editData){
-//   this.actionBtn = "Update";
-//   this.employeeForm.controls['firstName'].setValue(this.editData.firstName);
-//   this.employeeForm.controls['lastName'].setValue(this.editData.lastName);
-//   this.employeeForm.controls['email'].setValue(this.editData.email);
-//   this.employeeForm.controls['role'].setValue(this.editData.role);
-//  this.employeeForm.controls['designation'].setValue(this.editData.designation);
-//   this.employeeForm.controls['password'].setValue(this.editData.password);
-// }
-
-
-
-
-
-
-
-  ngOnInit(): void { }
-
-
-  addEmployee(){
+   addEmployee(){
     console.log(this.employeeForm.value);
     if(this.employeeForm.valid){
           this.api.createAccount(this.employeeForm.value)
@@ -79,8 +64,25 @@ error: any;
              }             
           )
             
+    }
   }
 
+  ngOnInit(){
+    this.getData
+   }
+
+  getData(){
+    if(this.editData){
+    this.actionBtn = "Update";
+    this.employeeForm.controls['firstName'].setValue(this.editData.firstName);
+    this.employeeForm.controls['lastName'].setValue(this.editData.lastName);
+    this.employeeForm.controls['email'].setValue(this.editData.email);
+    this.employeeForm.controls['appUserRole'].setValue(this.editData.appUserRole);
+     this.employeeForm.controls['designation'].setValue(this.editData.designation);
+     this.employeeForm.controls['password'].setValue(this.editData.password);
+     };
+ 
+  }
   // this.employeeForm = this.formBuilder.group({
   //   firstName : ['',Validators.required],
   //   lastName : ['',Validators.required],
@@ -118,7 +120,7 @@ error: any;
   //  }else{
   //   this.updateEmployee()
   //  }
-}
+
 //  updateEmployee(){
 //   this.api.putEmployee(this.employeeForm.value, this.editData.id)
 //   .subscribe({
@@ -131,6 +133,8 @@ error: any;
 //       alert("Error while updating the record!!");
 //     }
 //   })
-//  }
+ //  }
+  
 
 }
+

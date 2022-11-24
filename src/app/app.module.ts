@@ -49,6 +49,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     BrowserAnimationsModule,
   ],
 
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

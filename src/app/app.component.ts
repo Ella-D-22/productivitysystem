@@ -19,6 +19,7 @@ error:any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  dialogRef: any;
 
 
   constructor(private dialog : MatDialog, private api : ApiService) {
@@ -53,21 +54,23 @@ error:any;
       error:(err)=>{
         alert("Error while fetching the Records!!")
       }
-    })
+     })
     }
     
 
    editEmployee(row: any){
     this.dialog.open(DialogComponent,{
-      width:'30%',
-      data:row
+      width: '30%',
+      data: row
+
+
     }).afterClosed().subscribe(val=>{
       if(val==='update'){
         this.getAllEmployees();
       }
     })
    }
-
+   
  
 
     deleteEmployee(id:number){
@@ -82,18 +85,19 @@ error:any;
       }
     })
 
-  }
+   }
 
-  applyFilter(event: Event) {
+   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
     this.dataSource.paginator.firstPage();
-     }
+    
    }  
-}
-
+  }
+}  
+ 
    
  
 
