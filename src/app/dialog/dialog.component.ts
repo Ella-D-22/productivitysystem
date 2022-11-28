@@ -42,9 +42,9 @@ export class DialogComponent implements OnInit {
 
    if(this.editData){
      this.actionButton = "Update";
-    this.employeeForm.controls['firstName'].setValue(this.editData.firstName);
     this.employeeForm.controls['lastName'].setValue(this.editData.lastName);
-    this.employeeForm.controls['empEmail'].setValue(this.editData.email);
+    this.employeeForm.controls['firstName'].setValue(this.editData.firstName);
+    this.employeeForm.controls['email'].setValue(this.editData.email);
     this.employeeForm.controls['appUserRole'].setValue(this.editData.appUserRole);
     this.employeeForm.controls['designation'].setValue(this.editData.designation);
     this.employeeForm.controls['password'].setValue(this.editData.password);
@@ -70,9 +70,9 @@ export class DialogComponent implements OnInit {
         this.employeeForm.reset();
         this.matDialogRef.close('Save');
         },
-        error: ()=>{
-          alert("Error Occurred!")
-        }
+        // error: ()=>{
+        //   alert("Error Occurred!")
+        // }
       }
       )
     }
@@ -81,16 +81,17 @@ export class DialogComponent implements OnInit {
    }
   }
   updateEmployee(){
-    this.Api.update(this.employeeForm.value, this.editData.empId)
+    this.Api.update(this.employeeForm.value, this.editData.id)
     .subscribe({
       next: (res)=>{
         alert("Employee Records Updated Successfully");
+        console.log(this.employeeForm.value);
         this.employeeForm.reset();
         this.matDialogRef.close('Update');
       },
-      error: ()=>{
-        alert("Error in Updating the Details");
-      }
+      // error: ()=>{
+      //   alert("Error in Updating the Details");
+      // }
     })
   }
 

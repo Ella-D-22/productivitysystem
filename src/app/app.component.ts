@@ -14,7 +14,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'kodewithangularCRUD';
+  title = 'productivitySystem';
 
   // displayedColumns: string[] = ['empName', 'category', 'date', 'experience', 'salary', 'description', 'action'];
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'appUserRole', 'designation', 'password', 'action'];
@@ -74,17 +74,17 @@ export class AppComponent implements OnInit {
     
     }
 
-  deleteEmployee(empId: number) {
-      this.api.delete(empId)
+  deleteEmployee(id: number) {
+      this.api.delete(id)
       .subscribe({
         next: (res) => {
           alert("Employee Deleted Successfuly");
           this.getAllEmployees();
         },
-      error: (res)=>{
-        alert("Error in Deleting the Record");
-        this.getAllEmployees();
-      }
+      // error: (res)=>{
+      //   alert("Error in Deleting the Record");
+      //   this.getAllEmployees();
+      // }
       })
     }
 

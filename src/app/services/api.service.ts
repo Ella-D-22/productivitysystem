@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  baseURL: any = `${environment.empAPI}/ap1/v1`;
+  baseURL: any = `${environment.empAPI}`;
 
   create(data: any): Observable<any> {
     let API_URL = `${this.baseURL}/employee/add`;
@@ -29,7 +29,7 @@ export class ApiService {
     )
   }
   update(data: any, id: number): Observable<any> {
-    let API_URL = `${this.baseURL}/employee/update/${id}`;
+    let API_URL = `${this.baseURL}/update/${id}`;
     return this.http.put(API_URL, data, { headers: this.headers, withCredentials: false }).pipe(map(res => {
       return res || {}
     }),
@@ -37,7 +37,7 @@ export class ApiService {
     )
   }
   delete(id: number): Observable<any> {
-    let API_URL = `${this.baseURL}/employee/delete/${id}`;
+    let API_URL = `${this.baseURL}/delete/${id}`;
     return this.http.delete(API_URL, { headers: this.headers, withCredentials: false }).pipe(map(res => {
       return res || {}
     }),
