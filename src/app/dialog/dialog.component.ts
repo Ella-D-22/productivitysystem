@@ -11,7 +11,7 @@ import { ApiService } from '../services/api.service';
 export class DialogComponent implements OnInit {
 
 
-  seasons: string[] = ['One', 'Two', 'Three', 'Four'];
+  
   employeeForm !: FormGroup;
   actionButton : String= "Save";
   hide = true;
@@ -42,8 +42,8 @@ export class DialogComponent implements OnInit {
 
    if(this.editData){
      this.actionButton = "Update";
-    this.employeeForm.controls['lastName'].setValue(this.editData.lastName);
     this.employeeForm.controls['firstName'].setValue(this.editData.firstName);
+    this.employeeForm.controls['lastName'].setValue(this.editData.lastName);
     this.employeeForm.controls['email'].setValue(this.editData.email);
     this.employeeForm.controls['appUserRole'].setValue(this.editData.appUserRole);
     this.employeeForm.controls['designation'].setValue(this.editData.designation);
@@ -67,8 +67,9 @@ export class DialogComponent implements OnInit {
           {
         next: (res)=>{
         alert("Employee Added Successfuly!");
-        this.employeeForm.reset();
         this.matDialogRef.close('Save');
+        this.matDialogRef.close('Update');
+        this.employeeForm.reset();
         },
         // error: ()=>{
         //   alert("Error Occurred!")
@@ -86,8 +87,8 @@ export class DialogComponent implements OnInit {
       next: (res)=>{
         alert("Employee Records Updated Successfully");
         console.log(this.employeeForm.value);
-        this.employeeForm.reset();
         this.matDialogRef.close('Update');
+        this.employeeForm.reset();
       },
       // error: ()=>{
       //   alert("Error in Updating the Details");

@@ -56,9 +56,9 @@ export class AppComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
-      error: (err)=>{
-        alert("Could not fetch Data");
-      }
+      // error: (err)=>{
+      //   alert("Could not fetch Data");
+      // }
     })
     }
 
@@ -81,10 +81,10 @@ export class AppComponent implements OnInit {
           alert("Employee Deleted Successfuly");
           this.getAllEmployees();
         },
-      // error: (res)=>{
-      //   alert("Error in Deleting the Record");
-      //   this.getAllEmployees();
-      // }
+      error: (res)=>{
+        alert("Error in Deleting the Record");
+        this.getAllEmployees();
+      }
       })
     }
 
