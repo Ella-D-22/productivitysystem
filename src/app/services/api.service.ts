@@ -1,37 +1,52 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
-  
-  
-  constructor(private http: HttpClient) { }
-  baseURL = "http://localhost:8080/api/v1/registration";
 
-   createAccount(data: any): Observable<any> {
-    let API_URL = `${this.baseURL}/registration`;
+  constructor(private http: HttpClient) { }
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  baseURL: any = `${environment.empAPI}/ap1/v1`;
+
+  create(data: any): Observable<any> {
+    let API_URL = `${this.baseURL}/employee/add`;
     return this.http.post(API_URL, data, { headers: this.headers, withCredentials: false }).pipe(map(res => {
-       return res || {}
-    }),
-       catchError(this.errorMgmt)
-    )
-   }
-  
-   editAccount(data : any, id:string): Observable<any> {
-    let API_URL = `${this.baseURL}/employee/${id}`;
-    return this.http.put(API_URL, { headers: this.headers, withCredentials: false }).pipe(map(res => {
       return res || {}
     }),
       catchError(this.errorMgmt)
     )
-   }
- 
-   // Error handling
-   errorMgmt(error: HttpErrorResponse) {
+  }
+  get(): Observable<any> {
+    let API_URL = `${this.baseURL}/employee/all`;
+    return this.http.get(API_URL, { headers: this.headers, withCredentials: false }).pipe(map(res => {
+      return res || {}
+    }),
+      catchError(this.errorMgmt)
+    )
+  }
+  update(data: any, id: number): Observable<any> {
+    let API_URL = `${this.baseURL}/employee/update/${id}`;
+    return this.http.put(API_URL, data, { headers: this.headers, withCredentials: false }).pipe(map(res => {
+      return res || {}
+    }),
+      catchError(this.errorMgmt)
+    )
+  }
+  delete(id: number): Observable<any> {
+    let API_URL = `${this.baseURL}/employee/delete/${id}`;
+    return this.http.delete(API_URL, { headers: this.headers, withCredentials: false }).pipe(map(res => {
+      return res || {}
+    }),
+      catchError(this.errorMgmt)
+    )
+  }
+
+  // Error handling
+  errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
@@ -43,18 +58,4 @@ export class ApiService {
     return throwError(errorMessage);
   }
 
- postEmployee(data:  any): Observable<any> {
-  return this.http.post(this.baseURL+"/registration",data)
- }
- getEmployee(){
- return this.http.get<any>(this.baseURL+"/employees")
- }
- putEmployee(data : any, id:string): Observable<any> {
-  return this.http.put(this.baseURL+"/employee/"+id ,data)
- }
- deleteEmployee(id:number): Observable<any> {
-  return this.http.delete(this.baseURL+"/employee"+id);
- }
 }
-
-

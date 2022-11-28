@@ -19,13 +19,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogModule } from '@angular/cdk/dialog';
 import { DialogComponent } from './dialog/dialog.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { Observable } from 'rxjs';
 
 @NgModule({
   declarations: [
     AppComponent,
-
-     DialogComponent,
+     DialogComponent
 
     
   ],
@@ -47,6 +46,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     FormsModule,
     MatDialogModule,
     BrowserAnimationsModule,
+  DialogModule,
+  
   ],
 
   providers: [],

@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
+import { ApiService } from './services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { DialogComponent } from './dialog/dialog.component';
-import { ApiService } from './services/api.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -12,96 +14,86 @@ import { ApiService } from './services/api.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'productivitysystem';
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'role', 'designation', 'password' , 'action'];
-  dataSource!: MatTableDataSource<any>;
-error:any;
+  title = 'kodewithangularCRUD';
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  dialogRef: any;
+  // displayedColumns: string[] = ['empName', 'category', 'date', 'experience', 'salary', 'description', 'action'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'appUserRole', 'designation', 'password', 'action'];
 
+  dataSource !: MatTableDataSource<any>;
 
-  constructor(private dialog : MatDialog, private api : ApiService) {
+  @ViewChild(MatPaginator) paginator !: MatPaginator;
+  @ViewChild(MatSort) sort !: MatSort;
+
+  constructor(public dialog: MatDialog, private api : ApiService){
 
   }
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.getAllEmployees();
-    }
+    // throw new Error('Method not implemented.');
+  }
+  addEmployee(){
+  this.dialog.open(DialogComponent, {
+    width:"35%"
+  }).afterClosed().subscribe(val=>{
+    if(val=== 'Save'){
+      this.getAllEmployees();
 
-     
+    }
+  })
   
-    openDialog() {
-     this.dialog.open(DialogComponent, {
-        width:'30%'
-      }).afterClosed().subscribe(val=>{
-        
-        this.getAllEmployees();
-      if(val==='save'){
-       this.getAllEmployees();
-      }
-     })
-    }
+ }
 
-   getAllEmployees(){
-    this.api.getEmployee()
+ getAllEmployees(){
+  this.api.get()
+
+    this.api.get()
     .subscribe({
-      next:(res)=>{
+      next : (res)=>{
+        // 
+        console.log("Emp Details", res);
+        
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort
+        this.dataSource.sort = this.sort;
       },
-      error:(err)=>{
-        alert("Error while fetching the Records!!")
-      }
-     })
-    }
-    
-
-   editEmployee(row: any){
-    this.dialog.open(DialogComponent,{
-      width: '30%',
-      data: row
-
-
-    }).afterClosed().subscribe(val=>{
-      if(val==='update'){
-        this.getAllEmployees();
+      error: (err)=>{
+        alert("Could not fetch Data");
       }
     })
-   }
-   
- 
+    }
 
-    deleteEmployee(id:number){
-      this.api.deleteEmployee(id)
+    editEmployee(row: any){
+      this.dialog.open(DialogComponent,{
+        width:'35%',
+        data: row
+      }).afterClosed().subscribe(val=>{
+        if (val==='Update') {
+          this.getAllEmployees();
+        }
+      })
+    
+    }
+
+  deleteEmployee(empId: number) {
+      this.api.delete(empId)
       .subscribe({
-        next:(res)=>{
-          alert("Employee deleted successfully");
+        next: (res) => {
+          alert("Employee Deleted Successfuly");
           this.getAllEmployees();
         },
-        error:()=>{
-          alert("Error while deleting record!!")
+      error: (res)=>{
+        alert("Error in Deleting the Record");
+        this.getAllEmployees();
       }
-    })
+      })
+    }
 
-   }
-
-   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-    this.dataSource.paginator.firstPage();
-    
-   }  
-  }
-}  
- 
-   
- 
-
-
-
-
-
+    applyFilter(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+  
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
+    }
+}
