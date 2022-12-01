@@ -20,12 +20,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogModule } from '@angular/cdk/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { Observable } from 'rxjs';
+import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-     DialogComponent
-
+     DialogComponent,
+     LoginComponent,
+     AdminComponent,
+     PageNotFoundComponent
     
   ],
   imports: [

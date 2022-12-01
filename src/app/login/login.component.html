@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div id="formContent">
+
+                <h2 class="text-center text-dark mt-5">Login </h2>
+
+
+                <div class="card my-5">
+                    <form class="card-body cardbody-color p-lg-5">
+
+
+                        <div class="text-center">
+                            <img src="../../assets/EMtech.jpeg" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px" alt="profile">
+                        </div>
+
+                        <br>
+                        <form [formGroup]="userLogin" (ngSubmit)="loginSubmitted()">
+
+                            <div class="form-floating">
+                                <input type="email" class="form-control" placeholder="Enter Username" formControlName="email" name="email" id="email">
+                                <div class="form-text text-danger" *ngIf="email.errors?.['required'] && (email.dirty || email.touched)">
+                                    Email is Required
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-floating ">
+                                <input class="form-control" matInput [type]="hide ? 'password' : 'text' " placeholder="Enter your password " formControlName="password" name="password" id="password">
+                                <button mat-icon-button matSuffix (click)="hide=! hide " [attr.aria-label]=" 'Hide password' " [attr.aria-pressed]="hide ">
+                                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+
+                                <div class="form-text text-danger" *ngIf="password.errors?.['required'] && (password.dirty || password.touched)">
+                                    Password is Required
+                                </div>
+                                <div class="form-text text-danger" *ngIf="password.errors?.['minLength'] || password.errors?.['maxLength']&& (password.dirty || password.touched)">
+                                    Password shouldbe at least 6 to 15 characters long.
+                                </div>
+
+                            </div>
+                            <br>
+                            <button type="submit" [disabled]="false" class="btn btn-primary ">Login</button>
+                        </form>
+
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>

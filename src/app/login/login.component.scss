@@ -1,0 +1,36 @@
+.btn-color {
+    background-color: blue;
+    color: #fff;
+}
+
+.profile-image-pic {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.cardbody-color {
+    background-color: whitesmoke;
+}
+
+a {
+    text-decoration: none;
+}
+
+mat-card-content {
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.fill {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

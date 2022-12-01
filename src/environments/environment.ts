@@ -4,8 +4,8 @@
 
 export const environment = {
   production: true,
-  empAPI: "http://127.0.0.1:8080/api/v1/registration"
-
+  empAPI: "http://127.0.0.1:8080/api/v1/registration",
+  logAPI: "http://127.0.0.1:8080/login"
 };
 
 /*
