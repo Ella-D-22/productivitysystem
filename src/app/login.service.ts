@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import {catchError, map, throwError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './services/auth.service';
 import { User } from './user';
 
 @Injectable({
@@ -10,7 +11,8 @@ import { User } from './user';
 export class LoginService {
  
 
-  constructor( private httpClient: HttpClient) { }
+  constructor( private httpClient: HttpClient,
+    private loginAuth: AuthService ) { }
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   baseUrl: any = `${environment.logAPI}`;
