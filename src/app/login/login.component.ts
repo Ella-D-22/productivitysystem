@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
 hide= true;
 
-user: User = new User();
+// user: User = new User();
 
 
   constructor(private loginservice : LoginService,
@@ -39,6 +39,10 @@ password : new FormControl('',
 
 loginSubmitted(){
   console.log(this.userLogin)
+  this.router.navigate(['admin']);
+
+
+
 }
 
 get email(): FormControl{
